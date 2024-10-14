@@ -6,6 +6,7 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
+
   const convertedObj = {};
 
   sourceString.split(';').map((elem) => {
