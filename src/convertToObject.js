@@ -8,16 +8,20 @@
 function convertToObject(sourceString) {
   const convertedObj = {};
 
-  sourceString.split(';').forEach((elem) => {
+  const sourceArray = sourceString
+    .split(';')
+    .filter((style) => style.trim() !== '');
+
+  sourceArray.forEach((elem) => {
     const startValueIndex = elem.indexOf(':');
 
-    const parametr = elem.slice(0, startValueIndex).trim();
-    const value = elem.slice(startValueIndex + 1).trim();
+    if (startValueIndex !== -1) {
+      const propertyName = elem.slice(0, startValueIndex).trim();
+      const value = elem.slice(startValueIndex + 1).trim();
 
-    parametr.replace(/\n/g, '');
-
-    if (parametr) {
-      convertedObj[parametr] = value;
+      if (propertyName && value) {
+        convertedObj[propertyName] = value;
+      }
     }
   });
 
