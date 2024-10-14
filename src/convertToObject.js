@@ -6,10 +6,9 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-
   const convertedObj = {};
 
-  sourceString.split(';').map((elem) => {
+  sourceString.split(';').forEach((elem) => {
     const startValueIndex = elem.indexOf(':');
 
     const parametr = elem.slice(0, startValueIndex).trim();
